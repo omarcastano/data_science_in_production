@@ -1,3 +1,6 @@
 # Data Science In Production
 
-- [Terminal Configuration](content/developer_tools/terminal_configuration.md)
+- Setting Up Development Environment
+    - [Installing Oh My Posh](content/development_environment/setting_up_oh_my_posh.md)
+    - [Installing Vscode](content/development_environment/installing_vscode.md)
+    - [Installing UV](content/development_environment/installing_UV.md)
