@@ -1,0 +1,10 @@
+[project]
+name = "data_science_in_production"
+version = "0.1.0"
+description = "PRoject to learn data science in production"
+readme = "README.md"
+requires-python = ">=3.11, <3.13"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "seaborn>=0.13.2",
+]
