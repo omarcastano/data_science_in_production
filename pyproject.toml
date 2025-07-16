@@ -8,5 +8,6 @@ dependencies = [
     "fastapi>=0.115.12",
     "ipykernel>=6.29.5",
     "seaborn>=0.13.2",
+    "streamlit>=1.45.1",
     "uvicorn>=0.34.3",
 ]
