@@ -6,10 +6,10 @@ Think of FastAPI as a tool that helps your machine learning model talk to the ou
 
 Some feature of FastAPI are:
 
-- 🚀 **Fast**: It’s designed to be super quick.
-- ✨ **Easy to Use**: The code is clean and simple.
-- 🛠️ **Automatic Docs**: It creates interactive documentation automatically.
-- ✅ **Data Validation**: It checks if the input data is correct, so your model won’t crash.
+- **Fast**: It’s designed to be super quick.
+- **Easy to Use**: The code is clean and simple.
+- **Automatic Docs**: It creates interactive documentation automatically.
+- **Data Validation**: It checks if the input data is correct, so your model won’t crash.
 
 ### Why is FastAPI Important for Machine Learning?
 
@@ -58,4 +58,10 @@ To run the FastApi application `api.py`, that exposes two endpoints (/get_fracti
 
 ```bash
 uv run python -m uvicorn content.model_deployment.fastapi.first_api:app
+```
+
+To run the FastApi application fastapi_pydantic.py which uses pydatin to validate input and output data,you can execute the following command:
+
+```bash
+uv run python content/model_deployment/fastapi/fastapi_pydantic.py
 ```

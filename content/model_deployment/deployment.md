@@ -50,7 +50,7 @@ You have a trained model and want to expose it as an API endpoint. A client send
 
 Similar to Flask, but with faster performance and built-in documentation. Ideal for scalable ML APIs where speed and documentation matter (e.g., for teams or production systems).
 
-## 3. Streamlit
+## 3. [Streamlit](streamlit/streamlit.md)
 
 **Streamlit** is a framework for building interactive data applications quickly, with minimal effort and code.
 
