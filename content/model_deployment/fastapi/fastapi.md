@@ -57,7 +57,25 @@ With Uvicorn:
 To run the FastApi application `api.py`, that exposes two endpoints (/get_fraction and /post_fraction), using uvicorn you can execute the following command:
 
 ```bash
-uv run python -m uvicorn content.model_deployment.fastapi.first_api:app
+uv run python -m uvicorn content.model_deployment.fastapi.api:app
+```
+
+You can test the endpoint get_fraction of the api.py using the following command:
+
+```bash
+curl -X 'GET' \
+  'http://127.0.0.1:8000/get_fraction?a=2&b=2' \
+  -H 'accept: application/json'
+```
+
+You can test the endpoint post_fraction of the api.py using the following command:
+
+```bash
+curl -X 'POST' \
+  'http://127.0.0.1:8000/post_fraction' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{"a": 2, "b": 2}'
 ```
 
 To run the FastApi application fastapi_pydantic.py which uses pydatin to validate input and output data,you can execute the following command:
