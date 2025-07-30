@@ -12,3 +12,25 @@ In machine learning, DVC is used to:
 * **Reproduce experiments:** DVC allows you to define the steps of your machine learning pipeline (data preprocessing, model training, evaluation) as a directed acyclic graph (DAG). By tracking dependencies between data, code, and models, DVC can automatically rebuild previous results, ensuring that anyone can reproduce an experiment exactly.
 * **Manage large files:** Machine learning often involves large datasets and model files that are not suitable for traditional code versioning systems like Git. DVC stores metadata about these large files in Git, while the actual data is stored externally (e.g., on cloud storage like S3, Google Cloud Storage, or locally), making it efficient to manage them.
 * **Facilitate collaboration:** By providing a clear system for tracking data and model versions, DVC makes it easier for teams to collaborate on machine learning projects, ensuring everyone is working with the correct data and models.
+
+## Installation
+
+To install DVC, run the following command:
+
+```bash
+uv add dvc
+```
+
+To initialize a DVC repository, run the following command:
+
+```bash
+dvc init
+```
+
+To add a file to DVC, run the following command:
+
+```bash
+dvc add <file>
+```
+
+After adding the file to DVC, you can commit the changes to the git repo.
