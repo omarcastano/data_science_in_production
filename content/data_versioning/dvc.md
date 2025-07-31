@@ -23,7 +23,7 @@ To install DVC, run the following command:
 uv add dvc
 ```
 
-### Initialize a DVC repository
+## Initialize a DVC repository
 
 To initialize a DVC repository, run the following command:
 
@@ -41,7 +41,7 @@ This command will create a folder called `.dvc` in the root of your project. It 
 
 After running `dvc init` you should commit the changes to your Git repository.
 
-### Add a dataset to track them with DVC
+## Add a dataset to track them with DVC
 
 To add a dataset to track them with DVC, run the following command:
 
@@ -59,7 +59,7 @@ In addition:
 
 Every time you add a new dataset to your project, you should commit the changes to your Git repository indicating the new dataset version.
 
-###
+## Checkout a specific version of the dataset
 
 Let's suppose that we have added three versions of the same dataset, and that the commit history of our Git repository is as follows:
 
