@@ -96,3 +96,7 @@ uv run dvc checkout
 ```
 
 This will checkout the specific version of the dataset, and DVC will automatically update the dataset file (in the path <dataset_path>) to the version that was added in that commit.
+
+# Remote data Storage
+
+DVC allows you to store your data in a remote storage location, such as an S3 bucket or Google Drive. This is useful if you want to share your data with others or if you want to access your data from multiple machines.
