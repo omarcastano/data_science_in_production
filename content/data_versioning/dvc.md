@@ -97,6 +97,44 @@ uv run dvc checkout
 
 This will checkout the specific version of the dataset, and DVC will automatically update the dataset file (in the path <dataset_path>) to the version that was added in that commit.
 
-# Remote data Storage
+# Remote Data Storage
 
-DVC allows you to store your data in a remote storage location, such as an S3 bucket or Google Drive. This is useful if you want to share your data with others or if you want to access your data from multiple machines.
+DVC allows us to store our data in a remote storage location, such as an S3 bucket or Google Drive. This is useful if we want to share our data with others or access it from multiple machines. For now, we will use DagsHub to store our data.
+
+## DagsHub
+
+DagsHub is a remote storage service for our data. It is a free platform that allows us to store data in the cloud. We can create a free account at DagsHub. DagsHub supports DVC, so we can use both to store and track our data versions.
+
+## Create a New DagsHub Repository
+
+Once we have created a free account at DagsHub, we can create a new repository. To do this, go to the [DagsHub](https://dagshub.com/) website and click on `Create +` >> `New Repository` in the top right corner.
+
+<div align="center">
+  <img src="../images/new_dagshub_repo.png" alt="Create a new DagsHub repository" width="300"/>
+</div>
+
+Then, select the option `connect a repository` to connect a GitHub repo. This way, we sync our DagsHub repository with our GitHub repository. We will use GitHub to store our data versioning metadata and code, and DagsHub to store our data.
+
+<div align="center">
+  <img src="../images/connect_repo_to_dagshub.png" alt="Connect GitHub repository to DagsHub" width="600"/>
+</div>
+
+Once we have connected our GitHub repository to DagsHub, we need to initialize DVC to use DagsHub as a remote storage. To do this, run the following command:
+
+```bash
+uv run dvc remote add origin <dagshub_url_repository>
+uv run dvc remote modify origin --local auth basic 
+uv run dvc remote modify origin --local user <your_username> 
+uv run dvc remote modify origin --local password <your_token>
+uv run dvc remote default origin
+```
+
+<div align="center">
+  <img src="../images/sync_remote_dvc_dagshub_repo.png" alt="DVC remote" width="300"/>
+</div>
+
+Then we can add our dataset to DVC and push it to DagsHub. To do this, run the following commands:
+
+```bash
+uv run dvc push
+```

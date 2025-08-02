@@ -1,5 +1,5 @@
 outs:
-- md5: f922387ae4b204c6e4b6b092a038f15f
-  size: 364
+- md5: 56a95e254d2dea514f8fdaf67368d936
+  size: 300
   hash: md5
   path: tips.csv
