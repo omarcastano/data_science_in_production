@@ -38,3 +38,23 @@ mlflow server --host 127.0.0.1 --port 5000
 You can access the MLflow UI at `http://127.0.0.1:5000`.
 
 You can check the notebook [mlflow.ipynb](mlflow.ipynb) for more details about logging and tracking experiments.
+
+# Remote MLflow server
+
+MLflow can be hosted in a remote server using a cloud provider such as AWS, GPC, Azure, DagsHub, etc.
+
+## DagsHub
+
+Once we have our DVC repository initialized and our dataset added to it, we can use DagsHub to store our MLflow experiments. In order to do this, we need to downgrade our MLflow version to mlflow<2.10.0. To do this, run the following command:
+
+```bash
+uv add "mlflow==2.9.2"
+```
+
+We also need to add the python library dagshub to our project dependencies using the following command:
+
+```bash
+uv add dagshub
+```
+
+You can check the notebook [mlflow.ipynb](mlflow.ipynb) for more details about logging and tracking experiments using DagsHub.
