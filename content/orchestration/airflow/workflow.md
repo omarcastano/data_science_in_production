@@ -20,6 +20,13 @@ To install Airflow, run the following command:
 
 ```bash
 uv add apache-airflow
+uv add apache-airflow-providers-fab
+```
+
+then run the following command to set up the home directory of airflow to the current location (or the location you want):
+
+```bash
+export AIRFLOW_HOME=$(pwd)/airflow
 ```
 
 When installing Airflow in its default edition, you will see four different components.
@@ -31,3 +38,21 @@ When installing Airflow in its default edition, you will see four different comp
 - Scheduler: The scheduler is responsible for executing different tasks at the correct time, re-running pipelines, backfilling data, ensuring tasks completion, etc.
 
 - PostgreSQL: A database where all pipeline metadata is stored. This is typically a Postgres but other SQL databases are supported too.
+
+To generate the database, run the following command:
+
+```bash
+uv run airflow db init
+```
+
+after that, in the folder called `airflow` that has been created, you must create the file `simple_auth_manager_passwords.json.generated`, then enter the created file and the the following content:
+
+```json
+{"admin": "admin"}
+```
+
+To launch the webserver, run the following command:
+
+```bash
+uv run airflow api-server --port 8080
+```
