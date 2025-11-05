@@ -18,6 +18,8 @@ The prefect components that we are going to learn are:
   - [Work Pools](#work-pools)
   - [Workers](#workers)
   - [Schedules](#schedules)
+  - [Creating a Deployment from CLI](#creating-a-deployment-from-cli)
+  - [Creating a Deployment using Python](#creating-a-deployment-using-python)
 
 ## Server and UI
 
@@ -85,15 +87,23 @@ A work pool is a group of workers that share the same infrastructure and capabil
 
 Workers are the agents that actually execute flow runs. They poll assigned work pools, retrieve tasks, run them in matching environments (e.g. Docker, Kubernetes, process, cloud), and report results back to the Prefect Server.
 
+### Schedules
+
+Schedules define when and how often a deployment should run. They can be configured to run on a fixed schedule (e.g. daily, weekly, monthly) or based on specific events (e.g. cron, HTTP requests, file changes).
+
 ---
 
 With all this in mind, let's create a deployment for our flow.
+
+### Creating a Deployment from CLI
+
+In order to create a deployment from the CLI, we need to run the following command:
 
 ```bash
 uv run prefect deploy
 ```
 
-Once you execute this command, you will have to select the flow you want to deploy, and then you will have to select the work pool you want to use.
+Once you execute this command, you will have to select the flow you want to deploy, and then you will have to create and select the work pool you want to use.
 
 After selecting the flow and work pool, you will have to start the worker, but first you need to set the `PREFECT_API_URL` environment variable to the URL of your Prefect server.
 
@@ -111,12 +121,30 @@ you will be asked to select the work pool you want to use, select the worker you
 
 After your deploy and worker are ready, you can execute a run of your flow from the UI.
 
-### Schedules
-
-Schedules define when and how often a deployment should run. They can be configured to run on a fixed schedule (e.g. daily, weekly, monthly) or based on specific events (e.g. cron, HTTP requests, file changes).
-
 You can schedule your deployment to run at a specific time using the following command:
 
 ```bash
 uv run prefect deployment schedule create my-flow/my_first_deployment --interval 60
+```
+
+Alternatively, you can schedule your deployment to run at a specific time using the UI.
+
+### Creating a Deployment using Python
+
+AN alternative to creating a deployment using the CLI is to create it using Python, specifically you can use the `.serve()` method of the flow to create  the deployment. Here's an example:
+
+```python
+from prefect import flow
+
+@flow
+def my_flow():
+    print("Hello, World!")
+
+my_flow.serve(name="my_first_deployment", interval=60)
+```
+
+Now, you can run the script, which will create a scheduled deployment and start the worker pool, using the following command:
+
+```bash
+uv run python my_first_workflow.py
 ```
