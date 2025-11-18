@@ -163,21 +163,7 @@ uv run dvc push
 
 ## Download data from DagsHub
 
-You can download a specific version of your dataset from DagsHub using the following command:
-
-```bash
-uv run dvc pull
-```
-
-This will download the latest version of the dataset from DagsHub. If you want to download a specific version, you can use the following command:
-
-```bash
-uv run dvc checkout <commit_hash>
-```
-
-This will checkout the specific version of the dataset from DagsHub.
-
-Alternatively, you can use DagsHub python SDK to download a specific version of your dataset.
+You can download a specific version of your dataset from DagsHub using the python SDK:
 
 ```python
 import tempfile
