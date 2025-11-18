@@ -57,9 +57,21 @@ In addition:
 
 * The .gitignore file will be automatically updated so that Git ignores the original dataset file. This way, Git only tracks the lightweight .dvc file instead of the large dataset itself.
 
-Every time you add a new dataset to your project, you should commit the changes to your Git repository indicating the new dataset version.
+Every time you add a new dataset to your project, you should commit the changes to your Git repository indicating the new dataset version. You can commit the changes using the following command:
+
+```bash
+git add <dataset_path.dvc>
+git commit -m "Add <dataset_path>"
+git push
+```
 
 ## Checkout a specific version of the dataset
+
+You can check the commit history of your Git repository using the following command:
+
+```bash
+git log
+```
 
 Let's suppose that we have added three versions of the same dataset, and that the commit history of our Git repository is as follows:
 
@@ -137,4 +149,51 @@ Then we can add our dataset to DVC and push it to DagsHub. To do this, run the f
 
 ```bash
 uv run dvc push
+```
+
+Once DagsHub is initialized, we can push our dataset to DagsHub as we did before:
+
+```bash
+uv run dvc add <dataset_path>
+git add <dataset_path.dvc>
+git commit -m "Add <dataset_path>"
+git push
+uv run dvc push
+```
+
+## Download data from DagsHub
+
+You can download a specific version of your dataset from DagsHub using the following command:
+
+```bash
+uv run dvc pull
+```
+
+This will download the latest version of the dataset from DagsHub. If you want to download a specific version, you can use the following command:
+
+```bash
+uv run dvc checkout <commit_hash>
+```
+
+This will checkout the specific version of the dataset from DagsHub.
+
+Alternatively, you can use DagsHub python SDK to download a specific version of your dataset.
+
+```python
+import tempfile
+import pandas as pd
+from dagshub.streaming import DagsHubFilesystem
+
+with tempfile.TemporaryDirectory() as tmpdir:
+
+    
+    fs = DagsHubFilesystem(
+        tmpdir,
+        repo_url="https://dagshub.com/omar.castano25/use_case_titanic",
+        branch="81bfa5a0ee4cd01c932d5f19782eba5859d94d65", # branch or commit 
+        token="<token>"
+    )
+
+    train = pd.read_csv(fs.open(f"{tmpdir}/src/app/data/datasets/train.csv"))
+    test = pd.read_csv(fs.open(f"{tmpdir}/src/app/data/datasets/test.csv"))
 ```
